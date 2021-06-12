@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DokterController;
+use App\Http\Controllers\PasienController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+Route::get('dokter', [DokterController::class, 'index'])->name('dokter.index');
+Route::post('dokter/import', [DokterController::class, 'import'])->name('dokter.import');
+Route::get('pasien', [PasienController::class, 'index'])->name('pasien.index');
+Route::post('pasien/import', [PasienController::class, 'import'])->name('pasien.import');
